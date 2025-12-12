@@ -3,8 +3,6 @@
 ## Objective
 The primary objective of this project was to build a comprehensive Active Directory environment in the cloud to simulate a corporate network, acting as both the Administrator and the SOC Analyst. The goal was to establish a detection and response pipeline that identifies unauthorized access (RDP Brute Force/Success) and utilizes a SOAR platform to automatically contain the threat by disabling the compromised user account in Active Directory.
 
----
-
 ## Skills Learned
 
 **I. Infrastructure & Identity Management (IAM):**
@@ -26,8 +24,6 @@ The primary objective of this project was to build a comprehensive Active Direct
 * **Attack Generation:** Performed a Brute Force attack against the cloud-exposed RDP services to generate authentic "Failed Login" and "Successful Login" telemetry.
 * **Telemetry Verification:** Validated that the attack patterns were correctly captured by Sysmon and indexed by Splunk, ensuring the visibility required for detection.
 
----
-
 ## Tools Used
 
 **Security Operations Stack:**
@@ -48,12 +44,8 @@ The primary objective of this project was to build a comprehensive Active Direct
 * **RDP (Remote Desktop):** Protocol used for administration and attack vector.
 * **Draw.io:** Used for network diagramming.
 
----
-
 ## Network Diagram
 to add..
-
----
 
 ## Key Results
 
@@ -69,15 +61,11 @@ The workflow transformed the account lockout process from a manual administrativ
 * **Without Automation:** Analyst receives alert -> RDPs into Domain Controller -> Opens Active Directory Users & Computers -> Finds User -> Right Click "Disable". **(~10-15 Minutes)**
 * **With Automation:** Analyst receives Slack Notification on phone -> Clicks "Approve" -> Shuffle API disables the account instantly. **(< 1 Minute)**
 
----
-
 ## Screenshots
 *(Placeholder: Splunk Dashboard showing the brute force logs)*
 *(Placeholder: Shuffle workflow showing the decision tree)*
 *(Placeholder: Active Directory showing the "Account is Disabled" status)*
 *(Placeholder: Slack notification asking for approval)*
-
----
 
 ## Future Improvements
 
@@ -87,8 +75,6 @@ To further evolve this Active Directory project, the following enhancements are 
 * **Kerberoasting Simulation:** Expand the attack scope to include internal AD attacks like Kerberoasting to test detection capabilities against credential theft inside the perimeter.
 * **Vulnerability Scanning:** Introduce Nessus to scan the Domain Controller for misconfigurations or unpatched vulnerabilities.
 * **Report Generation:** Configure Splunk to email a weekly PDF report summarizing all RDP attempts and locked-out accounts to management.
-
----
 
 ## Conclusion
 
@@ -100,8 +86,6 @@ This project proves my ability to:
 * Architect automated workflows that reduce the workload on SOC teams and minimize the dwell time of attackers.
 
 These skills are essential for a modern SOC Analyst, enabling me to contribute immediately to threat detection and incident response operations.
-
----
 
 ## Resources and Documentation
 to add..
