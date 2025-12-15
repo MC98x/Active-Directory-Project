@@ -50,7 +50,10 @@ The primary objective of this project was to build a comprehensive **Active Dire
 ---
 
 ## Network Diagram
-to add..
+
+*This diagram illustrates the logical flow of data and control across the security environment. It shows the **Vultr Virtual Private Cloud (VPC)** segmenting the Domain Controller (DC) and Client from the central security servers. The telemetry flow (Windows Logs/4624) is shown moving from the Endpoints/DC to **Splunk (SIEM)** via the **Universal Forwarder**. The **Shuffle (SOAR) platform** receives the alert via a webhook, and its API connection to the **Active Directory** enables the automated containment action.*
+
+*(Placeholder: Insert your draw.io network diagram here showing the Vultr VPC, the DC, the Client, and the Splunk/Shuffle connections)*
 
 ---
 
@@ -74,7 +77,7 @@ The automation workflow transformed the account lockout process from a manual ad
 
 ### 1. The Detection: Splunk Query
 *I used a custom **SPL query** to filter for **Event ID 4624** (Successful Logon) and exclude expected internal IP ranges. The search results successfully identify the anomalous login by user **Jsmith** from the external **Source IP (185.236.200.243)**, triggering the automation workflow.*
-![Splunk Detection Dashboard](./key-screenshots/1-The Detection Splunk Query.png)
+![Splunk Detection Dashboard](key-screenshots/1-The Detection Splunk Query.png)
 
 ### 2. The Orchestration: Shuffle Workflow
 *This node graph represents the complete **SOAR playbook**. The workflow begins with the **Splunk Alert**, immediately sends an **Alert-Notification** to Slack, and then implements a **User-Action** decision gate. Upon approval, it executes the **Disable-User** action in **Active Directory** and confirms the action via **Update-Notification**.*
@@ -121,4 +124,4 @@ These skills are **essential for a modern SOC Analyst**, enabling me to contribu
 
 To review the full build process and configuration details
 
-* **Complete Process Screenshots:** [Full Screenshot Process](to add..)
+* **Complete Process Screenshots:** [Full Screenshot Process (Link to your blog/detailed step-by-step document)](to add..)
