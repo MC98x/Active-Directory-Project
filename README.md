@@ -1,4 +1,4 @@
-# Active Directory
+# Active Directory Project
 
 ## Objective
 The primary objective of this project was to build a comprehensive **Active Directory environment in the cloud** to simulate a corporate network and gain hands-on experience in **Detection Engineering**, **SOAR**, and **Incident Response**. The goal was to establish a **detection and response pipeline** that identifies unauthorized access (**Suspicious RDP Login**) and utilizes **Shuffle** (SOAR) to automatically **contain the threat** by **disabling the compromised user account**.
