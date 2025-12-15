@@ -124,4 +124,4 @@ These skills are **essential for a modern SOC Analyst**, enabling me to contribu
 
 To review the full build process and configuration details
 
-* **Complete Process Screenshots:** [Full Screenshot Process (Link to your blog/detailed step-by-step document)](to add..)
+* **Complete Process Screenshots:** [Full Screenshot Process](./full-screenshot-process)
