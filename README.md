@@ -57,7 +57,7 @@ to add..
 ## Key Results
 
 **1. Automated Containment of Compromised Users**
-By integrating **Shuffle** with **Active Directory**, I created a functional, real-time mechanism where a confirmed threat triggers a direct response, automatically **disabling that user account** in the Domain Controller.
+By integrating **Shuffle** with **Active Directory**, I created a functional, real-time mechanism where a confirmed threat triggers a direct response. After analyst approval, the workflow automatically **disables the user account** in the Domain Controller and provides a **final confirmation notification** stating which user was contained, closing the incident loop.
 
 **2. Telemetry Visibility & Ingestion**
 Successfully established a complete data pipeline where **Windows Security Logs** are generated on the endpoint, forwarded to the Indexer, and visualized in the **Splunk Dashboard**.
@@ -66,15 +66,29 @@ Successfully established a complete data pipeline where **Windows Security Logs*
 The automation workflow transformed the account lockout process from a manual administrative task to a **one-click operation**.
 
 * **Without Automation:** Analyst sees alert -> Manual login and disable. **(~10-15 Minutes)**
-* **With Automation:** Analyst receives **Slack Notification** -> Clicks "**Approve**" -> Shuffle **API disables the account instantly**. **(< 1 Minute)**
+* **With Automation:** Analyst receives **Slack Notification** -> Clicks "**Approve**" in email -> Shuffle **API disables the account instantly** and **confirms the action in Slack**. **(< 1 Minute)**
 
 ---
 
 ## Screenshots
-*(Placeholder: Splunk Dashboard showing the unauthorized login logs)*
-*(Placeholder: Shuffle workflow showing the decision tree)*
-*(Placeholder: Active Directory showing the "Account is Disabled" status)*
-*(Placeholder: Slack notification asking for approval)*
+
+### 1. The Detection: Splunk Query
+*I used a custom **SPL query** to filter for **Event ID 4624** (Successful Logon) and exclude expected internal IP ranges. The search results successfully identify the anomalous login by user **Jsmith** from the external **Source IP (185.236.200.243)**, triggering the automation workflow.*
+![Splunk Detection Dashboard](1-The Detection Splunk Query.png)
+
+### 2. The Orchestration: Shuffle Workflow
+*This node graph represents the complete **SOAR playbook**. The workflow begins with the **Splunk Alert**, immediately sends an **Alert-Notification** to Slack, and then implements a **User-Action** decision gate. Upon approval, it executes the **Disable-User** action in **Active Directory** and confirms the action via **Update-Notification**.*
+![Shuffle Workflow Logic](2-The Orchestration Shuffle Workflow.png)
+
+### 3. The Triage: Slack Alert and Email Approval
+*The system uses Slack for **immediate, high-visibility alerting** (displaying the user Jsmith and the suspicious IP). The **Email** serves as the **Human-in-the-Loop** step, providing the analyst with links to either approve or deny the remote action, ensuring proper vetting before containment.*
+![Slack Triage Notification](3.1-The Triage Slack Alert and Email Approval.png)
+![Email Approval Prompt](3.2-The Triage Slack Alert and Email Approval.png)
+
+### 4. The Response: Final Confirmation and Disabled Account
+*This demonstrates the closed-loop success of the automation: **Part A** (bottom image) shows the final Slack message confirming that **Account: Jsmith has been disabled**. **Part B** (top image) provides the visual validation within **Active Directory Users and Computers**, showing the user object for Jenny Smith is still present but now contained.*
+![Active Directory Disabled Account](4.1-The Response Final Confirmation and Disabled Account.png)
+![Final Slack Confirmation](4.2-The Response Final Confirmation and Disabled Account.png)
 
 ---
 
