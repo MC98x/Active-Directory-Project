@@ -1,7 +1,7 @@
 # Active Directory
 
 ## Objective
-The primary objective of this project was to build a comprehensive **Active Directory environment in the cloud** to simulate a corporate network and gain hands-on experience in **Detection Engineering**, **SOAR**, and **Incident Response**. The goal was to establish a **detection and response pipeline** that identifies unauthorized access (**RDP Brute Force/Success**) and utilizes **Shuffle** (SOAR) to automatically **contain the threat** by **disabling the compromised user account**.
+The primary objective of this project was to build a comprehensive **Active Directory environment in the cloud** to simulate a corporate network and gain hands-on experience in **Detection Engineering**, **SOAR**, and **Incident Response**. The goal was to establish a **detection and response pipeline** that identifies unauthorized access (**Suspicious RDP Login**) and utilizes **Shuffle** (SOAR) to automatically **contain the threat** by **disabling the compromised user account**.
 
 ---
 
@@ -13,8 +13,8 @@ The primary objective of this project was to build a comprehensive **Active Dire
 * **Endpoint Configuration:** Successfully **joined client workstations to the domain** and enabled **Remote Desktop Protocol (RDP)**.
 
 **II. Detection Engineering (SIEM):**
-* **Log Ingestion Pipeline:** Installed and configured **Splunk Enterprise** on a Linux server and deployed **Universal Forwarders** on Windows endpoints to ship **Windows Event Logs** and **Sysmon telemetry**.
-* **SPL (Search Processing Language):** Developed **custom Splunk queries** to filter out noise and specifically identify **Event ID 4624** (Successful Logins) and **4625** (Failed Logins) originating from unauthorized IP addresses.
+* **Log Ingestion Pipeline:** Installed and configured **Splunk Enterprise** on a Linux server and deployed **Universal Forwarders** on Windows endpoints to ship **Windows Security & System Logs**.
+* **SPL (Search Processing Language):** Developed **custom Splunk queries** to filter out noise and specifically identify **Event ID 4624** (Successful Logins) originating from unauthorized, external IP addresses.
 * **Alert Configuration:** Tuned Splunk alerts to trigger **near real-time notifications** based on specific threshold logic.
 
 **III. Security Orchestration, Automation, and Response (SOAR):**
@@ -23,8 +23,8 @@ The primary objective of this project was to build a comprehensive **Active Dire
 * **Human-in-the-Loop Logic:** Designed a **decision tree** in Shuffle that sends an **approval request** to the **SOC Analyst** (via Email/Slack) before taking remediation actions, preventing accidental lockouts.
 
 **IV. Threat Simulation:**
-* **Attack Generation:** Performed a **Brute Force attack** against the cloud-exposed RDP services to generate authentic telemetry.
-* **Telemetry Verification:** Validated that the attack patterns were correctly captured by **Sysmon** and indexed by **Splunk**.
+* **Adversary Emulation:** Simulated an **external attacker** gaining network access by authenticating via **VPN** from an unknown/external IP address to generate valid **Event ID 4624** telemetry.
+* **Telemetry Verification:** Validated that the source IP and login patterns were correctly captured by **Windows Security Logs** and indexed by **Splunk** as a distinct anomaly.
 
 ---
 
@@ -34,7 +34,6 @@ The primary objective of this project was to build a comprehensive **Active Dire
 * **Splunk Enterprise:** **SIEM** for log aggregation and searching.
 * **Shuffle:** **SOAR** platform for workflow automation.
 * **Splunk Universal Forwarder:** Endpoint log collection agent.
-* **Sysmon:** Advanced Windows System Monitor (Endpoint Telemetry).
 
 **Infrastructure & Environment:**
 * **Vultr:** **Cloud Service Provider** (Hosting the Lab).
@@ -61,7 +60,7 @@ to add..
 By integrating **Shuffle** with **Active Directory**, I created a functional, real-time mechanism where a confirmed threat triggers a direct response, automatically **disabling that user account** in the Domain Controller.
 
 **2. Telemetry Visibility & Ingestion**
-Successfully established a complete data pipeline where **Windows Security Logs** and **Sysmon data** are generated on the endpoint, forwarded to the Indexer, and visualized in the **Splunk Dashboard**.
+Successfully established a complete data pipeline where **Windows Security Logs** are generated on the endpoint, forwarded to the Indexer, and visualized in the **Splunk Dashboard**.
 
 **3. Drastic Reduction in Response Time (MTTR)**
 The automation workflow transformed the account lockout process from a manual administrative task to a **one-click operation**.
@@ -72,7 +71,7 @@ The automation workflow transformed the account lockout process from a manual ad
 ---
 
 ## Screenshots
-*(Placeholder: Splunk Dashboard showing the brute force logs)*
+*(Placeholder: Splunk Dashboard showing the unauthorized login logs)*
 *(Placeholder: Shuffle workflow showing the decision tree)*
 *(Placeholder: Active Directory showing the "Account is Disabled" status)*
 *(Placeholder: Slack notification asking for approval)*
@@ -109,4 +108,3 @@ These skills are **essential for a modern SOC Analyst**, enabling me to contribu
 To review the full build process and configuration details
 
 * **Complete Process Screenshots:** [Full Screenshot Process](to add..)
-
