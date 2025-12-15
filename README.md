@@ -53,7 +53,7 @@ The primary objective of this project was to build a comprehensive **Active Dire
 
 *This diagram illustrates the logical flow of data and control across the security environment. It shows the **Vultr Virtual Private Cloud (VPC)** segmenting the Domain Controller (DC) and Client from the central security servers. The telemetry flow (Windows Logs/4624) is shown moving from the Endpoints/DC to **Splunk (SIEM)** via the **Universal Forwarder**. The **Shuffle (SOAR) platform** receives the alert via a webhook, and its API connection to the **Active Directory** enables the automated containment action.*
 
-![Active Directory Project Diagram](key-screenshots/Active-Directory-Project-Diagram-V2.png)
+![Active Directory Project Diagram](key-screenshots/Active-Directory-Project-Digram-V2.drawio.png)
 
 ---
 
