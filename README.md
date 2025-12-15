@@ -77,7 +77,7 @@ The automation workflow transformed the account lockout process from a manual ad
 
 ### 1. The Detection: Splunk Query
 *I used a custom **SPL query** to filter for **Event ID 4624** (Successful Logon) and exclude expected internal IP ranges. The search results successfully identify the anomalous login by user **Jsmith** from the external **Source IP (185.236.200.243)**, triggering the automation workflow.*
-![Splunk Detection Dashboard](./key-screenshots/1-the-detection-splunk-query.png)
+![Splunk Detection Dashboard](key-screenshots/1-The-Detection-Splunk-Query.png)
 
 ### 2. The Orchestration: Shuffle Workflow
 *This node graph represents the complete **SOAR playbook**. The workflow begins with the **Splunk Alert**, immediately sends an **Alert-Notification** to Slack, and then implements a **User-Action** decision gate. Upon approval, it executes the **Disable-User** action in **Active Directory** and confirms the action via **Update-Notification**.*
