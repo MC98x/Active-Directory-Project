@@ -81,17 +81,17 @@ The automation workflow transformed the account lockout process from a manual ad
 
 ### 2. The Orchestration: Shuffle Workflow
 *This node graph represents the complete **SOAR playbook**. The workflow begins with the **Splunk Alert**, immediately sends an **Alert-Notification** to Slack, and then implements a **User-Action** decision gate. Upon approval, it executes the **Disable-User** action in **Active Directory** and confirms the action via **Update-Notification**.*
-![Shuffle Workflow Logic](key-screenshots/2-The Orchestration Shuffle Workflow.png)
+![Shuffle Workflow Logic](key-screenshots/2-The-Orchestration-Shuffle-Workflow.png)
 
 ### 3. The Triage: Slack Alert and Email Approval
 *The system uses Slack for **immediate, high-visibility alerting** (displaying the user Jsmith and the suspicious IP). The **Email** serves as the **Human-in-the-Loop** step, providing the analyst with links to either approve or deny the remote action, ensuring proper vetting before containment.*
-![Slack Triage Notification](key-screenshots/3.1-The Triage Slack Alert and Email Approval.png)
-![Email Approval Prompt](key-screenshots/3.2-The Triage Slack Alert and Email Approval.png)
+![Slack Triage Notification](key-screenshots/3.1-The-Triage-Slack-Alert-and-Email-Approval.png)
+![Email Approval Prompt](key-screenshots/3.2-The-Triage-Slack-Alert-and-Email-Approval.png)
 
 ### 4. The Response: Final Confirmation and Disabled Account
 *This demonstrates the closed-loop success of the automation: **Part A** (bottom image) shows the final Slack message confirming that **Account: Jsmith has been disabled**. **Part B** (top image) provides the visual validation within **Active Directory Users and Computers**, showing the user object for Jenny Smith is still present but now contained.*
-![Active Directory Disabled Account](key-screenshots/4.1-The Response Final Confirmation and Disabled Account.png)
-![Final Slack Confirmation](key-screenshots/4.2-The Response Final Confirmation and Disabled Account.png)
+![Active Directory Disabled Account](key-screenshots/4.1-The-Response-Final-Confirmation-and-Disabled-Account.png)
+![Final Slack Confirmation](key-screenshots/4.2-The-Response-Final-Confirmation-and-Disabled-Account.png)
 
 ---
 
